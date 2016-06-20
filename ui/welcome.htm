@@ -1,0 +1,59 @@
+<script type="text/javascript" src="ui/js/userController.js" ></script>
+<script type="text/javascript" src="ui/js/firebaseControll.js" ></script>
+
+<div id="loading_page">
+<img src="ui/images/loader.gif" alt="load" />
+</div>
+
+<div id="main">
+  <div class="shadow">
+    <div id="m_box" class="container">
+
+			<div id="nav" class="row">
+				<ul class="nav nav-pills navbar-left">
+					<li><img id="gravatar"></li>
+					<li><h3 id="u_name"></h3></li>
+				</ul>
+				<ul class="nav nav-pills navbar-right">
+					 <li ><a  onclick="logout()" id="fb-out">Wyloguj</a></li>
+				</ul>
+			</div>
+			<div id="info" class="container">
+				<div class="row">
+					<div id="viewer" class="col-md-7 col-sm-12 center-block">
+					</div>
+				</div>
+				<div id="name_row" class="row">
+					<h3 id="i_id"></h3>
+					<h2 id="i_title"></h2>
+					<h4>format: <small id="i_format"> </small></h4>
+				</div>
+			</div>
+		</div>
+		<div id="sec_page">
+			<div class="container">
+				<h2 class="block-right">NAPISZ DO NAS!</h2>
+				<div class="row">
+					<div class="container">
+					 <div class="form-horizontal">
+             <div id="send_alert" class="alert alert-success">
+               <p class="text-center">  Wiadomość wysłana </p>
+             </div>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Tekst</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="inputEmail3" placeholder="Tekst">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button id="send" class="btn btn-default">Wyślij</button>
+								</div>
+							</div>
+					 </div>
+				</div>
+			</div>
+		 </div>
+		</div>
+	</div>
+</div>
