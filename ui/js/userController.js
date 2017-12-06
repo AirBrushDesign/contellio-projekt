@@ -70,51 +70,50 @@ $(document).ready(function(){
 				user.name = response.name;
 				user.email = response.email.trim(); // "MyEmailAddress@example.com"
 				md =  md5( user.email );
-
 				$.ajax({
-				 type: "GET",
-				 url: 'http://pl.gravatar.com/'+md+'.json',
-				 dataType: "JSONP",
-				 success: function( response )
-					{
-							$( "#gravatar" ).attr( "src", response.entry[0].thumbnailUrl );
-				 	},
-				 	error: function ( xhr )
-					{
-						 alert( xhr.responseText )
-				 	}
-				});
+							 type: "GET",
+							 url: 'http://pl.gravatar.com/'+md+'.json',
+							 dataType: "JSONP",
+							 success: function( response )
+								{
+										$( "#gravatar" ).attr( "src", response.entry[0].thumbnailUrl );
+							 	},
+							 	error: function ( xhr )
+								{
+									 alert( xhr.responseText )
+							 	}
+						});
 
 				$( "#u_name" ).html( user.name ); 			// Show user name
 
 				console.log( 'Successful login for: ' + response.name );
+				console.log( token )
 				$.ajax({
-				 type: "GET",
-				 url: "controller/" + token,
-				 dataType: "JSON",
-				 success: function ( response ) {
-					for ( var i = 1; i < 10; i++ )
-					{
-						$("#viewer").append("<img class='img-responsive' src='"+response.cover_url+"?fm=jpg&w=600&page="+i+"&q=100' >")
-					}
+							 type: "GET",
+							 url: "/contellio/controller/" + token,
+							 dataType: "JSON",
+							 success: function ( response )
+							 {
 
-					$( "#i_id" ).html( response.item_id);
-					$( "#i_title" ).html( response.title);
-					$( "#i_format" ).html( response.format);
-					$( "#loading_page" ).hide();
-					console.log( response )
+										$("#viewer").append("<img class='img-responsive' src='"+response.cover_url+"'>")
+										$( "#i_id" ).html( response.item_id);
+										$( "#i_title" ).html( response.title);
+										$( "#i_format" ).html( response.format);
+										$( "#loading_page" ).hide();
+										console.log( response )
 
-				 },
-				 error: function ( xhr ) {
-						 alert( xhr.responseText )
-				 }
-			});
+							 },
+							 error: function ( xhr ) {
+
+									 console.log( xhr.responseText )
+							 }
+						});
 			});
 		}
 		$("#fb-out").click(function(){
-			FB.logout( function( response )
-			{
-				checkLoginState();
+					FB.logout( function( response )
+					{
+						checkLoginState();
+					});
 			});
-		});
 });
